@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->foreignId('wage_claim_id')->constrained('wage_claims')->cascadeOnDelete();
             $table->foreignId('approved_by')->nullable()->constrained('users')->nullOnDelete();
             $table->enum('role', ['supervisor', 'finance']);
-            $table->unique('wage_claim_id', 'role');
+            $table->unique(['wage_claim_id', 'role']);
             $table->enum('status', ['approved', 'rejected']);
             $table->text('note');
             $table->timestamp('approved_at');

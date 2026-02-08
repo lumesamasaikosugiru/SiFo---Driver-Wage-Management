@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Approval extends Model
 {
@@ -14,4 +15,14 @@ class Approval extends Model
         'note',
         'approved_at',
     ];
+
+    public function wageClaim(): BelongsTo
+    {
+        return $this->belongsTo(WageClaim::class, 'wage_claim_id');
+    }
+
+    public function approvedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'approved_by');
+    }
 }

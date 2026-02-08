@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DriverBio extends Model
 {
@@ -18,6 +19,9 @@ class DriverBio extends Model
         'no_emergency',
         'status',
     ];
-
+    public function driver(): BelongsTo
+    {
+        return $this->belongsTo(Driver::class, 'driver_id');
+    }
 
 }

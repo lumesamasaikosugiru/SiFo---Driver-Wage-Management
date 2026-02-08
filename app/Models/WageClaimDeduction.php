@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class WageClaimDeduction extends Model
 {
@@ -13,4 +14,9 @@ class WageClaimDeduction extends Model
         'amount',
         'evidence',
     ];
+
+    public function wageClaim(): BelongsTo
+    {
+        return $this->belongsTo(WageClaim::class, 'wage_claim');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class JobOrder extends Model
 {
@@ -19,4 +20,9 @@ class JobOrder extends Model
         'unload_note_photo',
         'status',
     ];
+
+    public function ritase(): HasOne
+    {
+        return $this->hasOne(Ritase::class, 'job_order_id');
+    }
 }

@@ -15,7 +15,8 @@ return new class extends Migration {
             $table->foreignId('driver_id')->constrained('drivers')->cascadeOnDelete();
             $table->date('priod_start');
             $table->date('priod_end');
-            $table->string('priod_key')->unique();
+            $table->string('priod_key');
+            $table->unique(['driver_id', 'priod_key']);
             $table->integer('total_ritase');
             $table->unsignedBigInteger('total_tarif');
             $table->unsignedBigInteger('total_bonus');

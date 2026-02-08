@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Driver extends Model
 {
@@ -12,4 +15,26 @@ class Driver extends Model
         'no_license',
         'status',
     ];
+
+    public function wageClaims(): HasMany
+    {
+        return $this->hasMany(WageClaim::class, 'driver_id');
+    }
+
+    public function driverBio(): HasOne
+    {
+        return $this->hasOne(DriverBio::class, 'driver_id');
+    }
+
+    public function ritases(): HasMany
+    {
+        return $this->hasMany(Ritase::class, 'dirver_id');
+    }
+
+    //belongsto
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

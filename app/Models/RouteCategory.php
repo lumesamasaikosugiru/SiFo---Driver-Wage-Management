@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class RouteCategory extends Model
 {
@@ -11,4 +12,9 @@ class RouteCategory extends Model
         'valid_from',
         'valid_until',
     ];
+
+    public function routes(): HasMany
+    {
+        return $this->hasMany(Route::class, 'routes_category_id');
+    }
 }
