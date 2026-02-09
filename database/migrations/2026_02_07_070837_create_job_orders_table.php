@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('job_orders', function (Blueprint $table) {
             $table->id();
             $table->string('job_order_number')->unique();
-            $table->string('vehicle_number', 9)->unique();
+            $table->string('vehicle_number', 9);
             $table->string('load_address');
             $table->string('unload_address');
             $table->unsignedMediumInteger('distance_km');

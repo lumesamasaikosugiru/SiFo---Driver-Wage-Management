@@ -12,15 +12,16 @@ return new class extends Migration {
     {
         Schema::create('bonus_rules', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 30)->unique();
+            $table->string('name', 50);
             $table->enum('type', ['ritase', 'distance']); // jenis bonus, bisa dapet salah satunya atau keduanya.
             $table->unsignedSmallInteger('min_value'); //diisi berdasarkan type bonus.
             $table->unsignedSmallInteger('max_value');
             $table->bigInteger('bonus_value');
-            $table->foreignId('route_category')->nullable()->constrained()->nullOnDelete();
-            $table->boolean('is_active')->default('true');
+            $table->foreignId('route_category')->nullable()->constrained('route_categories')->nullOnDelete();
+            $table->boolean('is_active');
             $table->date('valid_from')->nullable();
             $table->date('valid_until')->nullable();
+            $table->unique(['name', 'valid_from']); //data nama ATURAN BONUS & TANGGAL VALID ga boleh sama
             $table->timestamps();
         });
     }

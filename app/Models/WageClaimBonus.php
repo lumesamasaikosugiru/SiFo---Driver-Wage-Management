@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class WageClaimBonus extends Model
 {
     protected $fillable = [
+        'name',
         'wage_claim_id',
         'bonus_rule_id',
-        'amoount',
+        'amount',
     ];
 
     public function wageClaim(): BelongsTo
     {
-        return $this->belongsTo(WageClaimBonus::class, 'wage_claim_id');
+        return $this->belongsTo(WageClaim::class, 'wage_claim_id');
     }
 
     public function bonusRule(): BelongsTo

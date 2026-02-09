@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->foreignId('approved_by')->nullable()->constrained('users')->nullOnDelete();
             $table->enum('role', ['supervisor', 'finance']);
             $table->unique(['wage_claim_id', 'role']);
-            $table->enum('status', ['approved', 'rejected']);
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->text('note');
             $table->timestamp('approved_at');
             $table->timestamps();

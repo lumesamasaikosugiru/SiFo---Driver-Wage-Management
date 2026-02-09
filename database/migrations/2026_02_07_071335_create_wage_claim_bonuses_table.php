@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('wage_claim_bonuses', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 50);
             $table->foreignId('wage_claim_id')->constrained('wage_claims')->cascadeOnDelete();
             $table->foreignId('bonus_rule_id')->constrained('bonus_rules')->cascadeOnDelete();
             $table->unsignedBigInteger('amount');

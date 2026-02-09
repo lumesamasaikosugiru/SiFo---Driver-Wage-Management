@@ -17,6 +17,6 @@ class WageClaimDeduction extends Model
 
     public function wageClaim(): BelongsTo
     {
-        return $this->belongsTo(WageClaim::class, 'wage_claim');
+        return $this->belongsTo(WageClaim::class, 'wage_claim_id');
     }
 }

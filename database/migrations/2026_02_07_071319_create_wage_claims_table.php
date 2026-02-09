@@ -13,10 +13,10 @@ return new class extends Migration {
         Schema::create('wage_claims', function (Blueprint $table) {
             $table->id();
             $table->foreignId('driver_id')->constrained('drivers')->cascadeOnDelete();
-            $table->date('priod_start');
-            $table->date('priod_end');
-            $table->string('priod_key');
-            $table->unique(['driver_id', 'priod_key']);
+            $table->date('period_start');
+            $table->date('period_end');
+            $table->string('period_key');
+            $table->unique(['driver_id', 'period_key']);
             $table->integer('total_ritase');
             $table->unsignedBigInteger('total_tarif');
             $table->unsignedBigInteger('total_bonus');
@@ -32,7 +32,7 @@ return new class extends Migration {
                 'paid',
             ]);
             $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
-            $table->timestamp('locked_at');
+            $table->timestamp('locked_at')->nullable();
             $table->timestamps();
         });
     }

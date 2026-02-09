@@ -12,8 +12,7 @@ return new class extends Migration {
     {
         Schema::create('driver_bios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('driver_id')->constrained()->cascadeOnDelete();
-            $table->unique('driver_id');
+            $table->foreignId('driver_id')->unique()->constrained()->cascadeOnDelete();
             $table->string('fullname', 30);
             $table->enum('jk', ['L', 'P'])->default('L');
             $table->date('date_birth');

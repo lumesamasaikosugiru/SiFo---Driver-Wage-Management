@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('route_category_id')->constrained()->cascadeOnDelete();
             $table->string('name', 50);
+            $table->unique(['route_category_id', 'name']); //data KATEGORI sama ROUTE ga boleh sama
             $table->bigInteger('fee');
             $table->timestamps();
         });

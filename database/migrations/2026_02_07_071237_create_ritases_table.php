@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->foreignId('route_id')->constrained('routes')->cascadeOnDelete();
             $table->foreignId('job_order_id')->constrained('job_orders')->cascadeOnDelete();
             $table->date('date');
-            $table->foreignId('locked_by')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('locked_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamp('locked_at')->nullable();
             $table->timestamps();
         });

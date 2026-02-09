@@ -50,14 +50,14 @@ class User extends Authenticatable
         ];
     }
 
-    protected function driver(): HasOne
+    public function driver(): HasOne
     {
         return $this->hasOne(Driver::class, 'user_id');
     }
 
     //hasmany
 
-    public function wageClaims(): HasMany
+    public function createdWageClaims(): HasMany
     {
         return $this->hasMany(WageClaim::class, 'created_by');
     }

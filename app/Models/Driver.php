@@ -28,7 +28,7 @@ class Driver extends Model
 
     public function ritases(): HasMany
     {
-        return $this->hasMany(Ritase::class, 'dirver_id');
+        return $this->hasMany(Ritase::class, 'driver_id');
     }
 
     //belongsto

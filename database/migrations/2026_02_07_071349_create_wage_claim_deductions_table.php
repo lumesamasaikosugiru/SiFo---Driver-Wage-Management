@@ -18,7 +18,7 @@ return new class extends Migration {
                 'cargo_damaged',
                 'fraud',
                 'other',
-            ]);
+            ])->index();
             $table->text('description');
             $table->unsignedBigInteger('amount');
             $table->string('evidence')->nullable();

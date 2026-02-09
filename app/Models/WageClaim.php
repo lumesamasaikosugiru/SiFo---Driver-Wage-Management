@@ -11,9 +11,9 @@ class WageClaim extends Model
 {
     protected $fillable = [
         'driver_id',
-        'priod_start',
-        'priod_end',
-        'priod_key',
+        'period_start',
+        'period_end',
+        'period_key',
         'total_tarif',
         'total_bonus',
         'total_fee',
@@ -38,9 +38,11 @@ class WageClaim extends Model
         return $this->hasMany(Approval::class, 'wage_claim_id');
     }
 
-    public function payment(): HasMany
+    //hasone
+
+    public function payment(): HasOne
     {
-        return $this->hasMany(Payment::class, 'wage_claim_id');
+        return $this->hasOne(Payment::class, 'wage_claim_id');
     }
 
     //belongsto
