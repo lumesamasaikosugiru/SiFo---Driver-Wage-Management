@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Filament\Resources\RouteCategories\Pages;
+
+use App\Filament\Resources\RouteCategories\RouteCategoryResource;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\ViewAction;
+use Filament\Resources\Pages\EditRecord;
+
+class EditRouteCategory extends EditRecord
+{
+    protected static string $resource = RouteCategoryResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            ViewAction::make(),
+            DeleteAction::make(),
+        ];
+    }
+}

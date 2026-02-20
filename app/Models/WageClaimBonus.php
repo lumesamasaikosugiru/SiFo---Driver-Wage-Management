@@ -21,6 +21,6 @@ class WageClaimBonus extends Model
 
     public function bonusRule(): BelongsTo
     {
-        return $this->belongsTo(BonusRules::class, 'bonus_rule_id');
+        return $this->belongsTo(BonusRule::class, 'bonus_rule_id');
     }
 }

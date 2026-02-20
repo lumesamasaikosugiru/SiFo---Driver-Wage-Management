@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->unsignedSmallInteger('min_value'); //diisi berdasarkan type bonus.
             $table->unsignedSmallInteger('max_value');
             $table->bigInteger('bonus_value');
-            $table->foreignId('route_category')->nullable()->constrained('route_categories')->nullOnDelete();
+            $table->foreignId('route_category_id')->nullable()->constrained('route_categories')->nullOnDelete();
             $table->boolean('is_active');
             $table->date('valid_from')->nullable();
             $table->date('valid_until')->nullable();

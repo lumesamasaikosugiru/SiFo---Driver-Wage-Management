@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->foreignId('driver_id')->nullable()->constrained('drivers')->nullOnDelete();
             $table->foreignId('route_id')->constrained('routes')->cascadeOnDelete();
             $table->foreignId('job_order_id')->constrained('job_orders')->cascadeOnDelete();
+            $table->unsignedBigInteger('tarif');
+            $table->enum('status', ['draf', 'dikunci', 'dibatalkan']);
             $table->date('date');
             $table->foreignId('locked_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamp('locked_at')->nullable();
