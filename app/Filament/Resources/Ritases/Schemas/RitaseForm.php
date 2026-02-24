@@ -15,17 +15,22 @@ class RitaseForm
         return $schema
             ->components([
                 Select::make('driver_id')
-                    ->relationship('driver', 'id')
-                    ->default(null),
+                    ->relationship(
+                        'driver',
+                        'driver_code',
+                    )
+                    ->preload()
+                    ->searchable(),
+
                 Select::make('route_id')
                     ->relationship('route', 'name')
                     ->required(),
                 Select::make('job_order_id')
-                    ->relationship('jobOrder', 'id')
+                    ->relationship('jobOrder', 'job_order_number')
                     ->required(),
                 DatePicker::make('date')
                     ->required(),
-                TextInput::make('total_tarif')
+                TextInput::make('tarif')
                     ->required()
                     ->numeric(),
                 Select::make('status')
@@ -34,6 +39,7 @@ class RitaseForm
                         'dikunci' => 'Dikunci',
                         'dibatalkan' => 'Dibatalkan',
                     ])
+                    ->default('draft')
                     ->required(),
                 TextInput::make('locked_by')
                     ->numeric()

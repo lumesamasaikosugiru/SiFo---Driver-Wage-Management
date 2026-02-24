@@ -26,6 +26,11 @@ class Driver extends Model
         return $this->hasOne(DriverBio::class, 'driver_id');
     }
 
+    public function getFullnameAttribute()
+    {
+        return $this->driverBio?->fullname;
+    }
+
     public function ritases(): HasMany
     {
         return $this->hasMany(Ritase::class, 'driver_id');

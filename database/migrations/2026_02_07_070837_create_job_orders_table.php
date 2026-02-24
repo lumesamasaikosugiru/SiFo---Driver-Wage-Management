@@ -18,8 +18,8 @@ return new class extends Migration {
             $table->string('unload_address');
             $table->unsignedMediumInteger('distance_km');
             $table->string('cargo_name', 30);
-            $table->decimal('load_tonnage', 8, 2);
-            $table->decimal('unload_tonnage', 8, 2);
+            $table->decimal('load_tonnage', 20, 2);
+            $table->decimal('unload_tonnage', 20, 2);
             $table->string('delivery_note_photo');
             $table->string('unload_note_photo');
             $table->enum('status', ['draft', 'on_delivery', 'completed', 'cancelled']);

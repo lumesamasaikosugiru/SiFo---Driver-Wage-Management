@@ -15,7 +15,13 @@ class RitasesTable
     {
         return $table
             ->columns([
-                TextColumn::make('driver.id')
+                TextColumn::make('driver.driver_code')
+                    ->searchable(),
+                TextColumn::make('tarif')
+                    ->money('IDR')
+                    ->searchable(),
+                TextColumn::make('status')
+                    ->badge()
                     ->searchable(),
                 TextColumn::make('route.name')
                     ->searchable(),

@@ -43,13 +43,13 @@ class WageClaimForm
                     ->numeric(),
                 Select::make('status')
                     ->options([
-            'draft' => 'Draft',
-            'submitted' => 'Submitted',
-            'approved_supervisor' => 'Approved supervisor',
-            'approved_finance' => 'Approved finance',
-            'rejected' => 'Rejected',
-            'paid' => 'Paid',
-        ])
+                        'draft' => 'Draft',
+                        'submitted' => 'Submitted',
+                        'approved_supervisor' => 'Approved supervisor',
+                        'approved_finance' => 'Approved finance',
+                        'rejected' => 'Rejected',
+                        'paid' => 'Paid',
+                    ])
                     ->required(),
                 TextInput::make('created_by')
                     ->required()

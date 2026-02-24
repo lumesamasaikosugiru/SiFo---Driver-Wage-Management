@@ -20,7 +20,7 @@ class BonusRule extends Model
         'valid_until',
     ];
 
-    public function wageClaimBonuses(): HasMany
+    public function bonuses(): HasMany
     {
         return $this->hasMany(WageClaimBonus::class, 'bonus_rule_id');
     }

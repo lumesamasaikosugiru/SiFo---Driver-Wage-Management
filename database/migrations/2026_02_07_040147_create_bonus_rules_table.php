@@ -18,9 +18,9 @@ return new class extends Migration {
             $table->unsignedSmallInteger('max_value');
             $table->bigInteger('bonus_value');
             $table->foreignId('route_category_id')->nullable()->constrained('route_categories')->nullOnDelete();
-            $table->boolean('is_active');
-            $table->date('valid_from')->nullable();
-            $table->date('valid_until')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->date('valid_from');
+            $table->date('valid_until');
             $table->unique(['name', 'valid_from']); //data nama ATURAN BONUS & TANGGAL VALID ga boleh sama
             $table->timestamps();
         });
