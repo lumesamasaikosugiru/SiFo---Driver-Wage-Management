@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources\RouteCategories\Tables;
 
+use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
@@ -16,11 +18,14 @@ class RouteCategoriesTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label('Nama')
                     ->searchable(),
                 TextColumn::make('valid_from')
+                    ->label('Tanggal Valid')
                     ->date()
                     ->sortable(),
                 TextColumn::make('valid_until')
+                    ->label('Valid Hingga')
                     ->date()
                     ->sortable(),
                 TextColumn::make('created_at')
@@ -36,8 +41,11 @@ class RouteCategoriesTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ])
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

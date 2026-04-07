@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Routes\Schemas;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class RouteForm
@@ -12,14 +13,27 @@ class RouteForm
     {
         return $schema
             ->components([
-                Select::make('route_category_id')
-                    ->relationship('routeCategory', 'name')
-                    ->required(),
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('fee')
-                    ->required()
-                    ->numeric(),
+                Section::make('Rute Baru')
+                    ->schema([
+                        Select::make('route_category_id')
+                            ->label('Kategori Rute')
+                            ->placeholder('Pilih Kategori')
+                            ->preload()
+                            ->searchable()
+                            ->relationship('routeCategory', 'name')
+                            ->required(),
+                        TextInput::make('name')
+                            ->label('Nama Rute')
+                            ->required(),
+                        TextInput::make('fee')
+                            ->label('Upah')
+                            ->prefix('Rp')
+                            ->required()
+                            ->numeric(),
+
+                    ])
+                    ->columns(3)
+                    ->columnSpanFull()
             ]);
     }
 }

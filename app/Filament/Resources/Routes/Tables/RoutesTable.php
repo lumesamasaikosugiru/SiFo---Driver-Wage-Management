@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources\Routes\Tables;
 
+use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
@@ -16,11 +18,19 @@ class RoutesTable
         return $table
             ->columns([
                 TextColumn::make('routeCategory.name')
+                    ->label('Kategori Rute')
+                    ->badge()
+                    ->formatStateUsing(fn($state) => strtoupper($state))
                     ->searchable(),
+
                 TextColumn::make('name')
+                    ->label('Nama Rute')
                     ->searchable(),
+
                 TextColumn::make('fee')
+                    ->label('Upah')
                     ->numeric()
+                    ->prefix('Rp ')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -35,8 +45,11 @@ class RoutesTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ])
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
